@@ -30,16 +30,16 @@
         background-color: #191919;
     }
     .logo-img{
-        width: 35px;
+        width: max-content;
         display: block;
-        max-height: 30px;
-        margin-left: 13px;
+        padding-left: 40px;
+        margin-left: 15px;
         margin-right: 15px;
+        
 
         img{
-            width: 35px;
-            top: 16px;
-            position: absolute;
+            width: max-content;
+            top: 10px;
         }
     }
     .sidebar-wrapper{
