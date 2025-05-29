@@ -62,13 +62,27 @@ export class AuthService {
     try {
       const decoded: DecodedToken = jwtDecode(token); // Use jwtDecode
       const isTokenExpired = decoded.exp * 1000 < Date.now();
-      if(isTokenExpired) {console.log("token expired")}
-      return !isTokenExpired;
-      console.log("token expired")
+      if(isTokenExpired){
+        console.log("token expired");
+        this.refreshToken().subscribe((res)=>{
+          console.log(res);
+          if(res.access_token){
+            localStorage.setItem('token', res.access_token);
+            console.log("token refreshed")
+            return true;
+          }
+        });
+      } 
+      return true;
     } catch (error) {
       console.error('Token decode error:', error);
       return false;
     }
+  }
+
+  refreshToken():Observable<any>{
+    const token = this.getToken();
+    return this.http.post<any>(`${this.apiUrl}/refreshToken`,{})
   }
 
   // Get user information from the token

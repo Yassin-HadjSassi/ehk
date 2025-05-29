@@ -1,0 +1,81 @@
+/* Dialog title */
+h2[mat-dialog-title] {
+    font-size: 20px; /* Standard dialog title size */
+    font-weight: 500; /* Medium weight for emphasis */
+    color: #333; /* Dark text for readability */
+    margin: 0; /* Remove default margins */
+    padding: 16px 24px; /* Consistent padding */
+    border-bottom: 1px solid #e0e0e0; /* Subtle separator */
+  }
+  
+  /* Dialog content */
+  mat-dialog-content {
+    font-size: 14px; /* Standard text size */
+    color: #555; /* Slightly lighter text for contrast */
+    line-height: 1.5; /* Improved readability */
+    padding: 24px; /* Comfortable padding */
+    background-color: #ffffff; /* White background */
+  }
+  
+  /* Dialog actions */
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    padding: 8px 24px 16px; /* Consistent padding */
+    background-color: #fafafa; /* Light background for action area */
+    border-top: 1px solid #e0e0e0; /* Subtle separator */
+  }
+  
+  /* Dialog buttons */
+  mat-dialog-actions button[mat-button] {
+    font-size: 14px; /* Standard button text size */
+    font-weight: 500; /* Slightly bold for emphasis */
+    text-transform: uppercase; /* Material Design button style */
+    padding: 6px 16px; /* Comfortable button padding */
+    margin-left: 8px; /* Space between buttons */
+    border-radius: 4px; /* Subtle rounding */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover transition */
+  }
+  
+  /* Cancel button */
+  mat-dialog-actions button[mat-dialog-close]:not([mat-dialog-close="true"]) {
+    color: #555; /* Neutral color for cancel */
+    background-color: transparent; /* No background */
+  }
+  
+  mat-dialog-actions button[mat-dialog-close]:not([mat-dialog-close="true"]):hover {
+    background-color: #f5f5f5; /* Light hover effect */
+  }
+  
+  /* Delete button */
+  mat-dialog-actions button[mat-dialog-close="true"] {
+    color: #ffffff; /* White text */
+    background-color: #d32f2f; /* Material red for delete action */
+  }
+  
+  mat-dialog-actions button[mat-dialog-close="true"]:hover {
+    background-color: #b71c1c; /* Darker red on hover */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    h2[mat-dialog-title] {
+      font-size: 18px; /* Slightly smaller title */
+      padding: 12px 16px; /* Reduced padding */
+    }
+  
+    mat-dialog-content {
+      font-size: 13px; /* Smaller text */
+      padding: 16px; /* Reduced padding */
+    }
+  
+    mat-dialog-actions {
+      padding: 8px 16px 12px; /* Reduced padding */
+    }
+  
+    mat-dialog-actions button[mat-button] {
+      font-size: 13px; /* Smaller button text */
+      padding: 4px 12px; /* Smaller button padding */
+      margin-left: 4px; /* Tighter spacing */
+    }
+  }

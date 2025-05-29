@@ -1,0 +1,124 @@
+/* Dialog title */
+h2[mat-dialog-title] {
+    font-size: 20px; /* Standard dialog title size */
+    font-weight: 500; /* Medium weight for emphasis */
+    color: #333; /* Dark text for readability */
+    margin: 0; /* Remove default margins */
+    padding: 16px 24px; /* Consistent padding */
+    border-bottom: 1px solid #e0e0e0; /* Subtle separator */
+  }
+  
+  /* Dialog content */
+  mat-dialog-content {
+    font-size: 14px; /* Standard text size */
+    color: #555; /* Slightly lighter text for contrast */
+    padding: 24px; /* Comfortable padding */
+    background-color: #ffffff; /* White background */
+    display: flex;
+    flex-direction: column; /* Stack form fields vertically */
+    gap: 16px; /* Space between form fields */
+  }
+  
+  /* Form fields */
+  mat-form-field {
+    width: 100%; /* Full width for form fields */
+  }
+  
+  /* Input fields */
+  mat-form-field input[matInput] {
+    font-size: 14px; /* Consistent text size */
+    color: #333; /* Dark text for inputs */
+  }
+  
+  /* Date range picker */
+  mat-date-range-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-date-range-input input[matStartDate],
+  mat-date-range-input input[matEndDate] {
+    font-size: 14px; /* Consistent text size */
+  }
+  
+  /* Datepicker toggle */
+  mat-datepicker-toggle {
+    color: #3f51b5; /* Primary color for icon */
+  }
+  
+  /* Hint text */
+  mat-hint {
+    font-size: 12px; /* Smaller hint text */
+    color: #777; /* Light gray for hints */
+  }
+  
+  /* Dialog actions */
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    padding: 8px 24px 16px; /* Consistent padding */
+    background-color: #fafafa; /* Light background for action area */
+    border-top: 1px solid #e0e0e0; /* Subtle separator */
+  }
+  
+  /* Dialog buttons */
+  mat-dialog-actions button.mat-raised-button {
+    font-size: 14px; /* Standard button text size */
+    font-weight: 500; /* Slightly bold for emphasis */
+    text-transform: uppercase; /* Material Design button style */
+    padding: 6px 16px; /* Comfortable button padding */
+    margin-left: 8px; /* Space between buttons */
+    border-radius: 4px; /* Subtle rounding */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover transition */
+  }
+  
+  /* Close button */
+  mat-dialog-actions button.mat-raised-button:not(.mat-primary) {
+    background-color: #f5f5f5; /* Light gray background */
+    color: #555; /* Neutral text color */
+  }
+  
+  mat-dialog-actions button.mat-raised-button:not(.mat-primary):hover {
+    background-color: #e0e0e0; /* Darker gray on hover */
+  }
+  
+  /* Save button */
+  mat-dialog-actions button.mat-raised-button.mat-primary {
+    background-color: #3f51b5; /* Material primary color (Indigo) */
+    color: #ffffff; /* White text */
+  }
+  
+  mat-dialog-actions button.mat-raised-button.mat-primary:hover {
+    background-color: #303f9f; /* Darker primary color on hover */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    h2[mat-dialog-title] {
+      font-size: 18px; /* Slightly smaller title */
+      padding: 12px 16px; /* Reduced padding */
+    }
+  
+    mat-dialog-content {
+      padding: 16px; /* Reduced padding */
+      gap: 12px; /* Tighter spacing between fields */
+    }
+  
+    mat-form-field input[matInput] {
+      font-size: 13px; /* Smaller text */
+    }
+  
+    mat-hint {
+      font-size: 11px; /* Smaller hint text */
+    }
+  
+    mat-dialog-actions {
+      padding: 8px 16px 12px; /* Reduced padding */
+    }
+  
+    mat-dialog-actions button.mat-raised-button {
+      font-size: 13px; /* Smaller button text */
+      padding: 4px 12px; /* Smaller button padding */
+      margin-left: 4px; /* Tighter spacing */
+    }
+  }

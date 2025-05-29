@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>creation d'Event</h2>
+
+<mat-dialog-content [formGroup]="form">
+<p hidden>
+    <mat-form-field>
+        <input matInput placeholder="id" formControlName="id">
+    </mat-form-field>
+</p>
+    <mat-form-field>
+        <input matInput placeholder="refcategorie" formControlName="refcategorie">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="nomcategorie" formControlName="nomcategorie">
+    </mat-form-field>
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+</mat-dialog-actions>
