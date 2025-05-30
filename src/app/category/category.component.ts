@@ -63,7 +63,8 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     open(){
     let dialogRef = this.dialog.open(ModalCategoryComponent)
     dialogRef.afterClosed().subscribe((res)=>{
-      if(res.nomcategorie != null){
+      if(res && res.nomcategorie != null){
+        this.loaded = false;
         this.CS.addCategory(res).subscribe(() => {
           this.fetchData()
         })
@@ -77,6 +78,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     let dialogRef = this.dialog.open(ModalCategoryComponent,x)
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
+        this.loaded = false;
         this.CS.updateCategory(res,id).subscribe(() => {
           this.fetchData()
         })
@@ -89,6 +91,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     let dialogRef = this.dialog.open(ConfirmComponent)
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
+        this.loaded = false;
         this.CS.deleteCategory(id).subscribe(()=>{
           this.fetchData()
         })

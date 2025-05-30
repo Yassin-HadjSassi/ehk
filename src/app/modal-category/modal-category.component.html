@@ -1,21 +1,28 @@
-<h2 mat-dialog-title>creation d'Event</h2>
+<h2 mat-dialog-title>Création d'Event</h2>
 
-<mat-dialog-content [formGroup]="form">
-<p hidden>
+<!-- Show loading message when form is not yet initialized -->
+<mat-dialog-content *ngIf="!form">
+  <h3>Chargement...</h3>
+</mat-dialog-content>
+
+<!-- Show form only after it's ready -->
+<mat-dialog-content *ngIf="form" [formGroup]="form">
+  <p hidden>
     <mat-form-field>
-        <input matInput placeholder="id" formControlName="id">
+      <input matInput placeholder="id" formControlName="id">
     </mat-form-field>
-</p>
-    <mat-form-field>
-        <input matInput placeholder="refcategorie" formControlName="refcategorie">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="nomcategorie" formControlName="nomcategorie">
-    </mat-form-field>
- 
+  </p>
+
+  <mat-form-field>
+    <input matInput placeholder="refcategorie" formControlName="refcategorie">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="nomcategorie" formControlName="nomcategorie">
+  </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
 </mat-dialog-actions>

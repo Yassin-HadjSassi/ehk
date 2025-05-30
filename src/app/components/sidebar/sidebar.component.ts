@@ -10,12 +10,17 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: '/category', title: 'Category',  icon: 'category', class: '' },
+    { path: '/forme', title: 'Forme',  icon: 'view_in_ar', class: '' },
+    { path: '/article', title: 'Article',  icon: 'storefront', class: '' },
+    { path: '/emplacement', title: 'Emplacement',  icon: 'place', class: '' },
+    { path: '/stock', title: 'Stock',  icon: 'inventory', class: '' },
+    { path: '/order', title: 'Order',  icon: 'shopping_bag', class: '' },
     { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' }
+    // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
+    // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
+    // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
+    // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
+    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' }
 ];
 
 @Component({

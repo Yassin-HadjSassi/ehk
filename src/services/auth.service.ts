@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode'; // Use named import
+import { Router } from '@angular/router';
 
 interface LoginResponse {
   success: boolean;
@@ -26,7 +27,7 @@ interface DecodedToken {
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router:Router) {}
 
   // Login method to authenticate user and store token
   login(email: string, password: string): Observable<LoginResponse> {
@@ -64,12 +65,18 @@ export class AuthService {
       const isTokenExpired = decoded.exp * 1000 < Date.now();
       if(isTokenExpired){
         console.log("token expired");
-        this.refreshToken().subscribe((res)=>{
-          console.log(res);
-          if(res.access_token){
-            localStorage.setItem('token', res.access_token);
-            console.log("token refreshed")
-            return true;
+        this.refreshToken().subscribe({
+          next: (res) => {
+            console.log(res);
+            if (res.access_token) {
+              localStorage.setItem('token', res.access_token);
+              console.log("Token refreshed");
+              return true;
+            }
+          },
+          error: (err) => {
+            console.error("Failed to refresh token:", err);
+            this.logout().subscribe();
           }
         });
       } 
@@ -82,7 +89,13 @@ export class AuthService {
 
   refreshToken():Observable<any>{
     const token = this.getToken();
-    return this.http.post<any>(`${this.apiUrl}/refreshToken`,{})
+    try {
+      return this.http.post<any>(`${this.apiUrl}/refreshToken`,{})
+    } catch (error) {
+
+      this.logout()
+    }
+    
   }
 
   // Get user information from the token
@@ -102,9 +115,11 @@ export class AuthService {
 
   // Logout method to clear token
   logout(): Observable<any> {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
     return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
       map((response) => {
-        localStorage.removeItem('token');
         return response;
       }),
       catchError((error) => {
