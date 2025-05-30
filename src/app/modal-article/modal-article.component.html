@@ -1,12 +1,12 @@
 <h2 mat-dialog-title></h2>
 
 <!-- Show loading message when form is not yet initialized -->
-<mat-dialog-content *ngIf="!form">
+<mat-dialog-content *ngIf="loading">
   <h3>Chargement...</h3>
 </mat-dialog-content>
 
 <!-- Show form only after it's ready -->
-<mat-dialog-content *ngIf="form" [formGroup]="form">
+<mat-dialog-content *ngIf="!loading" [formGroup]="form">
   <p hidden>
     <mat-form-field>
       <input matInput placeholder="id" formControlName="id">
@@ -20,6 +20,33 @@
   <mat-form-field>
     <input matInput placeholder="designation" formControlName="designation">
   </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="prixHT" formControlName="prixHT">
+  </mat-form-field>
+    <mat-form-field>
+    <input matInput placeholder="imageart" formControlName="imageart">
+  </mat-form-field>
+
+  
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Categorie</mat-label>
+    <mat-select formControlName="categorieID">
+      <mat-option *ngFor="let cat of categories" [value]="cat.refcategorie">
+        {{ cat.nomcategorie }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Forme</mat-label>
+    <mat-select formControlName="formeID">
+      <mat-option *ngFor="let emp of formes" [value]="emp.refforme">
+        {{ emp.designation }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </mat-dialog-content>
 
 <mat-dialog-actions>

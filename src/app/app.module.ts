@@ -33,10 +33,12 @@ import { ModalOrderComponent } from './modal-order/modal-order.component';
 import { ModalStockComponent } from './modal-stock/modal-stock.component';
 import { UserComponent } from './user/user.component';
 import { ModalUserComponent } from './modal-user/modal-user.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
   imports: [
+    MatSelectModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     BrowserModule,

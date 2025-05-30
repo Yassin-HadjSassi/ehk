@@ -1,28 +1,41 @@
 <h2 mat-dialog-title></h2>
 
 <!-- Show loading message when form is not yet initialized -->
-<mat-dialog-content *ngIf="!form">
+<mat-dialog-content *ngIf="loading">
   <h3>Chargement...</h3>
 </mat-dialog-content>
 
 <!-- Show form only after it's ready -->
-<mat-dialog-content *ngIf="form" [formGroup]="form">
+<mat-dialog-content *ngIf="!loading" [formGroup]="form">
   <p hidden>
     <mat-form-field>
       <input matInput placeholder="id" formControlName="id">
     </mat-form-field>
   </p>
 
-  <mat-form-field>
-    <input matInput placeholder="articleID" formControlName="articleID">
+  <!-- Article Select -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Article</mat-label>
+    <mat-select formControlName="articleID">
+      <mat-option *ngFor="let art of articles" [value]="art.refEHK">
+        {{ art.refEHK }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="emplacementID" formControlName="emplacementID">
+  <!-- Emplacement Select -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Emplacement</mat-label>
+    <mat-select formControlName="emplacementID">
+      <mat-option *ngFor="let emp of emplacements" [value]="emp.pos">
+        {{ emp.pos }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
-    <mat-form-field>
-    <input matInput placeholder="qtestock" formControlName="qtestock">
+  <!-- Quantité Stock -->
+  <mat-form-field>
+    <input matInput placeholder="Quantité en Stock" formControlName="qtestock">
   </mat-form-field>
 
 </mat-dialog-content>

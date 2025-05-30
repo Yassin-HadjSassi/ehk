@@ -16,7 +16,7 @@ import { ConfirmComponent } from 'app/confirm/confirm.component';
 export class ArticleComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Article>;
   loaded = false;
-  displayedColumns: string[] = ['id','refEHK', 'designation','actions'];
+  displayedColumns: string[] = ['id','refEHK', 'designation','prixHT','imageart','categorieID','formeID','actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
