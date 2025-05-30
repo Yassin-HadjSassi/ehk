@@ -2,26 +2,26 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Article } from 'app/models/Article';
-import { ArticleService } from 'services/article.service';
-import { ModalArticleComponent } from 'app/modal-article/modal-article.component';
+import { User } from 'app/models/User';
+import { UserService } from 'services/user.service';
+import { ModalUserComponent } from 'app/modal-user/modal-user.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConfirmComponent } from 'app/confirm/confirm.component';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class ArticleComponent implements OnInit, AfterViewInit {
-  dataSource: MatTableDataSource<Article>;
+export class UserComponent implements OnInit, AfterViewInit {
+  dataSource: MatTableDataSource<User>;
   loaded = false;
-  displayedColumns: string[] = ['id','refEHK', 'designation','actions'];
+  displayedColumns: string[] = ['id','name', 'email','role'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private AS: ArticleService, private dialog:MatDialog) {
+  constructor(private US: UserService, private dialog:MatDialog) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -44,7 +44,7 @@ export class ArticleComponent implements OnInit, AfterViewInit {
   }
 
   fetchData() {
-    this.AS.GetAllArticle().subscribe((res) => {
+    this.US.GetAllUser().subscribe((res) => {
       this.dataSource.data = res;
       this.loaded = true;
 
@@ -61,11 +61,11 @@ export class ArticleComponent implements OnInit, AfterViewInit {
   }
 
     open(){
-    let dialogRef = this.dialog.open(ModalArticleComponent)
+    let dialogRef = this.dialog.open(ModalUserComponent)
     dialogRef.afterClosed().subscribe((res)=>{
-      if(res && res.refEHK != null){
+      if(res && res.name != null){
         this.loaded = false;
-        this.AS.addArticle(res).subscribe(() => {
+        this.US.addUser(res).subscribe(() => {
           this.fetchData()
         })
       }
@@ -75,11 +75,11 @@ export class ArticleComponent implements OnInit, AfterViewInit {
     openEdit(id : string):void{
     let x = new MatDialogConfig();
     x.data = id
-    let dialogRef = this.dialog.open(ModalArticleComponent,x)
+    let dialogRef = this.dialog.open(ModalUserComponent,x)
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
         this.loaded = false;
-        this.AS.updateArticle(res,id).subscribe(() => {
+        this.US.updateUser(res,id).subscribe(() => {
           this.fetchData()
         })
       }
@@ -92,9 +92,10 @@ export class ArticleComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
         this.loaded = false;
-        this.AS.deleteArticle(id).subscribe(()=>{
+        this.US.deleteUser(id).subscribe(()=>{
           this.fetchData()
         })
+
       }
     })
   }

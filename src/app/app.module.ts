@@ -31,6 +31,8 @@ import { ModalArticleComponent } from './modal-article/modal-article.component';
 import { ModalEmplacementComponent } from './modal-emplacement/modal-emplacement.component';
 import { ModalOrderComponent } from './modal-order/modal-order.component';
 import { ModalStockComponent } from './modal-stock/modal-stock.component';
+import { UserComponent } from './user/user.component';
+import { ModalUserComponent } from './modal-user/modal-user.component';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import { ModalStockComponent } from './modal-stock/modal-stock.component';
     ModalEmplacementComponent,
     ModalOrderComponent,
     ModalStockComponent,
+    UserComponent,
+    ModalUserComponent,
 
   ],
   providers: [

@@ -9,6 +9,7 @@ import { ArticleComponent } from 'app/article/article.component';
 import { EmplacementComponent } from 'app/emplacement/emplacement.component';
 import { StockComponent } from 'app/stock/stock.component';
 import { OrderComponent } from 'app/order/order.component';
+import { UserComponent } from 'app/user/user.component';
 
 export const AdminLayoutRoutes: Routes = [
     
@@ -20,6 +21,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'emplacement',      component: EmplacementComponent , canActivate: [AuthGuard]},
     { path: 'stock',      component: StockComponent , canActivate: [AuthGuard]},
     { path: 'order',      component: OrderComponent , canActivate: [AuthGuard]},
+    { path: 'user',      component: UserComponent , canActivate: [AuthGuard]},
     { path: 'user-profile',   component: UserProfileComponent , canActivate: [AuthGuard]},
     { path: '**', component: DashboardComponent , canActivate: [AuthGuard]},
 ];

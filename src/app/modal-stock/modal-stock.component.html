@@ -1,1 +1,33 @@
-<p>modal-stock works!</p>
+<h2 mat-dialog-title></h2>
+
+<!-- Show loading message when form is not yet initialized -->
+<mat-dialog-content *ngIf="!form">
+  <h3>Chargement...</h3>
+</mat-dialog-content>
+
+<!-- Show form only after it's ready -->
+<mat-dialog-content *ngIf="form" [formGroup]="form">
+  <p hidden>
+    <mat-form-field>
+      <input matInput placeholder="id" formControlName="id">
+    </mat-form-field>
+  </p>
+
+  <mat-form-field>
+    <input matInput placeholder="articleID" formControlName="articleID">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="emplacementID" formControlName="emplacementID">
+  </mat-form-field>
+
+    <mat-form-field>
+    <input matInput placeholder="qtestock" formControlName="qtestock">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>
